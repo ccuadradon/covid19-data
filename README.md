@@ -1,7 +1,5 @@
 # Datos COVID19 Chile
 
-[![CSV Testing](https://github.com/jorgeperezrojas/covid19-data/workflows/CSV%20Testing/badge.svg)](https://github.com/jorgeperezrojas/covid19-data/actions?query=workflow%3A%22CSV+Testing%22)
-
 En este respositorio encontrarás versiones .csv de datos de COVID19 en Chile, la mayor parte de ellos obtenidos desde [esta planilla](https://docs.google.com/spreadsheets/d/1mLx2L8nMaRZu0Sy4lyFniDewl6jDcgnxB_d0lHG-boc). Los datos en la planilla se actualizan con cada nuevo informe en pdf entregado por el [Minsal](https://www.minsal.cl/) (sí, **en pdf**🤦‍♂️). Los datos en este repositorio los actualizaremos tan frecuemtemente como podamos (idealmente una vez al día) y dependiendo de si el Minsal sigue entregando informes y no cambia demasiado los formatos.
 
 ¡Pueden usar los datos para lo que quieran! Pero por favor🙏 sean responsables si hacen predicciones con ellos. Cualquiera que quiera ayudar es muy bienvenid@. Pueden hacer un *Pull Request*, abrir un *Issue* o escribir a jperez_arroba_dcc.uchile.cl.
@@ -14,7 +12,6 @@ Los datos disponibles son los siguientes:
 * [confirmados_comunas.csv](csv/confirmados_comunas.csv): Total de pacientes confirmados como positivos de COVID19 por comuna para datos reportados desde el lunes 30 de marzo (según el Minsal estos datos se liberarán los lunes, miércoles y viernes de cada semana)
 * [pacientes_en_uci.csv](csv/pacientes_en_uci.csv): Total de pacientes hospitalizados en la Unidad de Cuidados Intensivos (UCI) por región desde el 1 de abril de 2020
 * [muertes.csv](csv/muertes.csv): Total de muertes por COVID19 por región desde el 1 de abril de 2020
-* [muertes_deis](csv/muertes_deis/): Total de muertes por mes en las comunas de la RM desde el año 2000 a mayo de 2020 registradas por el Departamento de Estadísticas e Información de Salud (DEIS) del Ministerio de Salud ([Fuente](https://public.tableau.com/profile/deis4231#!/vizhome/HechosVitalesdesdeel2000/Defunciones))
 * [notificaciones.csv](csv/notificaciones.csv): Total de casos notificados (tests) por tipo de institución (ISP, Hospital, Privado) desde el 1 de abril de 2020 (Este es un dato un tanto ambiguo. El Minsal lo reporta como "tests notificados" pero parece estar ligado mas a un "reporte de sospecha" en el sistema Epivigila.)
 * [resumen_nacional.csv](csv/resumen_nacional.csv): Cantidad total de contagiados y muertos en todo el país ordenados por día. No reportamos los pacientes "recuperados" pues la estadística reportada por el Minsal es nada más que una fórmula (`recuperados[t] = confirmados[t-14] - muertos[t]`).
 

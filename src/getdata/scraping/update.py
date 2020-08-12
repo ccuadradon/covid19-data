@@ -52,27 +52,28 @@ def update_files():
     dict_per_region = dict()
 
     # prepare the new gov data
-    i = 0
+
     for row in rows:
         for name_region in regions_data:
-            if i == name_region["gob_code"]:
+            if row[0] == name_region["region"]:
                 dict_per_region[regions_data.index(name_region)] = {
-                    "region": name_region["region_name"],
+                    "region": row[0],
+                    "region_id": regions_data.index(name_region) + 1,
                     "new_daily_cases": undotter(row[2]),
                     "confirmed": undotter(row[1]),
-                    "deaths": undotter(row[7]),
+                    "deaths": undotter(row[5]),
                 }
-        i += 1
+
     # add latest gov confirmed data to csv
     for row in confirmed_data:
-        row[date] = str(dict_per_region[int(row["codigo"])]["confirmed"])
+        row[date] = str(dict_per_region[int(row["codigo"]) - 1]["confirmed"])
     with open(CONFIRMED_CSV_PATH, "w", newline="") as csv_file:
         writer = csv.DictWriter(csv_file, fieldnames=confirmed_header)
         writer.writeheader()
         writer.writerows(confirmed_data)
     # add latest gov death data to csv
     for row in deaths_data:
-        row[date] = str(dict_per_region[int(row["codigo"])]["deaths"])
+        row[date] = str(dict_per_region[int(row["codigo"]) - 1]["deaths"])
     with open(DEATHS_CSV_PATH, "w", newline="") as csv_file:
         writer = csv.DictWriter(csv_file, fieldnames=deaths_header)
         writer.writeheader()
@@ -80,12 +81,9 @@ def update_files():
 
     if date != national_data[-1]["dia"]:
         national_dict = {
-            "confirmados": str(rows[-1][1])
-            .replace(",", "")
-            .replace('"', "")
-            .replace(".", ""),
+            "confirmados": rows[-1][1],
             "dia": date,
-            "muertes": str(rows[-1][7]).replace(",", "").replace('"', "").replace(".", ""),
+            "muertes": rows[-1][5],
         }
         national_data.append(national_dict)
 
